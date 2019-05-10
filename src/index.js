@@ -1,10 +1,17 @@
-import Login from "./TAPages/appLogin"
-import React, {Component} from 'react';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-export default class App extends Component {
-    render() {
-      return (
-        <Login />
-      );
-    }
-  }
+import Login from "./view_posts_stack";
+import Register from "./view_posts_stack";
+
+const root = createStackNavigator({
+  Login: {
+    screen: Login
+  },
+  Register: {
+    screen: Register
+  },
+});
+
+const App =  createAppContainer(root);
+
+export default App;
