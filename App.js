@@ -5,7 +5,7 @@
  * @format
  * @flow
  */
-import Src from "./src"
+import Src from "./src/navigator"
 import React, {Component} from 'react';
 
 export default class App extends Component {

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Text, View, StyleSheet,Dimensions } from 'react-native';
-import { inputBorderColor } from '../../TAStyles/TAcolors';
+import { inputBorderColor, gradientStart, gradientEnd } from '../../TAStyles/TAcolors';
 import {inputBorderRadius} from '../../TAStyles/TAalignment';
 import {inputHeight} from '../../TAStyles/TAalignment';
 import {inputFontSize} from '../../TAStyles/TAalignment';
+import LinearGradient from "react-native-linear-gradient";
 
 const { width, height } = Dimensions.get('window');
 
@@ -12,13 +13,15 @@ export default class App extends React.Component {
     return (
       <View style={{flex:0,flexDirection:'column'}} >
             <View style={styles.container}>
-            
-                  <Text style={[styles.box,{fontSize: inputFontSize,backgroundColor:'orange',color:'white',alignItems:'center'}]}>Student</Text>
-                  <Text style={[styles.box,{borderLeftWidth:1,borderColor:inputBorderColor,fontSize: inputFontSize,alignItems:'center'}]}>Teacher </Text>
+              <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[gradientStart, gradientEnd]}  style={styles.boxLeft}>
+                <Text style={{color:'white',fontSize: inputFontSize}}> Student </Text>
+              </LinearGradient>
+              <View style={styles.boxRight} >
+                  <Text style={{fontSize: inputFontSize,alignItems:'center'}} >Teacher </Text>
+              </View>
             </View>
-            
-
-                  <View style={[styles.triangle, this.props.style]} />
+            <LinearGradient style={[styles.triangle, this.props.style]} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[gradientStart, gradientEnd]} >
+            </LinearGradient>
         </View>
     );
   }
@@ -26,25 +29,40 @@ export default class App extends React.Component {
 
 
 const styles = StyleSheet.create({
+  boxLeft:{
+    height:inputHeight,
+    borderBottomLeftRadius: inputBorderRadius, 
+    borderTopLeftRadius: inputBorderRadius, 
+    borderColor:inputBorderColor,
+    alignItems:'center',
+    justifyContent:'center',
+    flex: 0.5,
+  },
+  boxRight:{
+    height:inputHeight,
+    borderBottomRightRadius: inputBorderRadius, 
+    borderTopRightRadius: inputBorderRadius, 
+    borderColor:inputBorderColor,
+    borderWidth: 1,
+    alignItems:'center',
+    justifyContent:'center',
+    flex: 0.5,
+  },
   container: {    
     height:inputHeight,
     borderRadius: inputBorderRadius, 
     fontSize: inputFontSize,
     borderColor:inputBorderColor,
     borderBottomWidth: 1,
-    elevation: 1,
     flexDirection: "row",
+    borderColor: "red",
+    zIndex: 3
   },
-  
-  box:{
-    flex: 0.5,
-    backgroundColor:'orange', 
-  },
+
 
   triangle: {
     width: 0,
     height: 0,
-    backgroundColor: 'transparent',
     borderStyle: 'solid',
     borderLeftWidth: 12,
     borderRightWidth: 12,
@@ -53,5 +71,7 @@ const styles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderTopColor: 'orange',
     left:width/5,
+    marginTop: -3,
+    zIndex: 1
   }
 });
