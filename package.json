@@ -7,11 +7,21 @@
     "test": "jest"
   },
   "dependencies": {
+    "formik": "^1.5.8",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-linear-gradient": "^2.5.4",
-    "react-navigation": "^3.9.1"
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.9.1",
+    "react-navigation-fluid-transitions": "^0.3.2",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.3.2",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
